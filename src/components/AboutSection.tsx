@@ -50,24 +50,24 @@ const AboutSection: React.FC = () => {
           </div>
 
           <div className="order-1 md:order-2 relative">
-            <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
+            <div className="relative h-[500px] rounded-lg overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
               <img 
-                src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                src="/images/DUPLEX.jpeg" 
                 alt="Sustainable architecture project" 
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover transform scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70"></div>
-              <div className="absolute bottom-0 left-0 p-6">
-                <div className="inline-flex items-center px-4 py-2 bg-blue-600 rounded-lg text-white font-medium mb-3">
-                  <Wind size={18} className="mr-2" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent opacity-80"></div>
+              <div className="absolute bottom-0 left-0 p-8">
+                <div className="inline-flex items-center px-6 py-3 bg-blue-600 rounded-lg text-white font-medium mb-4 shadow-lg">
+                  <Wind size={24} className="mr-3" />
                   Sustainable Design
                 </div>
-                <h3 className="text-2xl font-bold text-white">Emerald Heights Residence</h3>
+                <h3 className="text-3xl font-bold text-white drop-shadow-lg">Emerald Heights Residence</h3>
               </div>
             </div>
             
-            <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-blue-100 rounded-full -z-10"></div>
-            <div className="absolute -top-8 -left-8 w-24 h-24 bg-blue-200 rounded-full -z-10"></div>
+            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-blue-100 rounded-full -z-10 opacity-80"></div>
+            <div className="absolute -top-8 -left-8 w-32 h-32 bg-blue-200 rounded-full -z-10 opacity-80"></div>
           </div>
         </div>
       </div>

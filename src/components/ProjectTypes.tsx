@@ -71,10 +71,10 @@ const ProjectTypes: React.FC = () => {
                 <img 
                   src={type.image} 
                   alt={type.title} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transform scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                  <div className="text-white text-center">
+                <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+                  <div className="text-white text-center transform scale-110">
                     {type.icon}
                     <h2 className="text-2xl font-bold mt-4">{type.title}</h2>
                   </div>

@@ -59,11 +59,11 @@ const GallerySection: React.FC = () => {
               onClick={() => openModal(img.src)}
             >
               <div className="relative overflow-hidden h-72">
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300 z-10"></div>
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300 z-10"></div>
                 <img
                   src={img.src}
                   alt={img.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125"
                   loading="lazy"
                 />
               </div>
