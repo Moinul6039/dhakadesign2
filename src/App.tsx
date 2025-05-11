@@ -5,6 +5,7 @@ import ProjectsSection from './components/ProjectsSection';
 import ProjectTypes from './components/ProjectTypes';
 import AboutSection from './components/AboutSection';
 import GallerySection from './components/GallerySection';
+import ProjectHandoverSection from './components/ProjectHandoverSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
@@ -22,6 +23,7 @@ function App() {
         <ProjectsSection />
         <AboutSection />
         <GallerySection />
+        <ProjectHandoverSection />
         <ContactSection />
       </main>
       <Footer />
