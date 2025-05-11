@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight, ZoomIn, X } from 'lucide-react';
 
 const images = [
   { src: '/images/lalmia.jpg', title: 'Ayesha Nurul Lake serenity' },
@@ -27,18 +28,28 @@ const masonryHeights = [
 ];
 
 const GallerySection: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState(1);
   const [modalOpen, setModalOpen] = useState(false);
-  const [activeImg, setActiveImg] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<typeof images[0] | null>(null);
+  const imagesPerPage = 6;
 
-  const openModal = (src: string) => {
-    setActiveImg(src);
+  // Pagination logic
+  const totalPages = Math.ceil(images.length / imagesPerPage);
+  const startIndex = (currentPage - 1) * imagesPerPage;
+  const endIndex = startIndex + imagesPerPage;
+  const currentImages = images.slice(startIndex, endIndex);
+
+  const handlePrevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+  const handleNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+
+  const openModal = (img: typeof images[0]) => {
+    setSelectedImage(img);
     setModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
-
   const closeModal = () => {
     setModalOpen(false);
-    setActiveImg(null);
+    setSelectedImage(null);
     document.body.style.overflow = '';
   };
 
@@ -51,45 +62,98 @@ const GallerySection: React.FC = () => {
             Explore our collection of project images and design inspirations.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {images.map((img, idx) => (
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {currentImages.map((img, idx) => (
             <div
               key={idx}
-              className="group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white h-full flex flex-col"
-              onClick={() => openModal(img.src)}
+              className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+              onClick={() => openModal(img)}
             >
-              <div className="relative overflow-hidden h-72">
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300 z-10"></div>
+              <div className="relative h-72 overflow-hidden">
                 <img
                   src={img.src}
                   alt={img.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125"
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                   loading="lazy"
                 />
-              </div>
-              <div className="p-4 text-center">
-                <h3 className="text-lg font-bold text-gray-900">{img.title}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 p-6">
+                    <h3 className="text-xl font-bold text-white mb-2">{img.title}</h3>
+                  </div>
+                </div>
+                <div className="absolute top-4 right-4 bg-black/50 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <ZoomIn size={24} className="text-white" />
+                </div>
               </div>
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Modal */}
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 animate-fade-in" onClick={closeModal}>
-          <div className="relative max-w-3xl w-full p-4" onClick={e => e.stopPropagation()}>
+        {/* Pagination Controls */}
+        {images.length > imagesPerPage && (
+          <div className="flex justify-center items-center mt-12 space-x-4">
             <button
-              className="absolute top-2 right-2 bg-black bg-opacity-60 hover:bg-opacity-80 text-white rounded-full p-2 z-10"
-              onClick={closeModal}
-              aria-label="Close"
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              className={`flex items-center px-4 py-2 rounded-lg ${
+                currentPage === 1
+                  ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                  : 'bg-blue-600 text-white hover:bg-blue-700'
+              } transition-colors duration-300`}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+              <ChevronLeft size={20} className="mr-2" />
+              Previous
             </button>
-            <img src={activeImg!} alt="Large gallery" className="w-full max-h-[80vh] object-contain rounded-lg shadow-2xl" />
+            <span className="text-gray-600">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className={`flex items-center px-4 py-2 rounded-lg ${
+                currentPage === totalPages
+                  ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                  : 'bg-blue-600 text-white hover:bg-blue-700'
+              } transition-colors duration-300`}
+            >
+              Next
+              <ChevronRight size={20} className="ml-2" />
+            </button>
           </div>
-        </div>
-      )}
+        )}
+
+        {/* Modal/Lightbox */}
+        {modalOpen && selectedImage && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 animate-fade-in"
+            onClick={closeModal}
+          >
+            <div
+              className="relative max-w-6xl w-full mx-4 p-4"
+              onClick={e => e.stopPropagation()}
+            >
+              <button
+                className="absolute top-4 right-4 bg-black bg-opacity-60 hover:bg-opacity-80 text-white rounded-full p-2 z-10 transition-colors duration-300"
+                onClick={closeModal}
+                aria-label="Close"
+              >
+                <X size={24} />
+              </button>
+              <div className="relative">
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.title}
+                  className="w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6 rounded-b-lg">
+                  <h3 className="text-2xl font-bold text-white mb-2">{selectedImage.title}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </section>
   );
 };

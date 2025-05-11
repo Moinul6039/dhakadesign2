@@ -7,6 +7,7 @@ import AboutSection from './components/AboutSection';
 import GallerySection from './components/GallerySection';
 import ProjectHandoverSection from './components/ProjectHandoverSection';
 import ContactSection from './components/ContactSection';
+import TeamSection from './components/TeamSection';
 import Footer from './components/Footer';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <GallerySection />
         <ProjectHandoverSection />
         <ContactSection />
+        <TeamSection />
       </main>
       <Footer />
     </div>
