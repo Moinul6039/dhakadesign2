@@ -22,6 +22,14 @@ const ContactSection: React.FC = () => {
     setFormData({ name: '', email: '', message: '' });
   };
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const [openModalId, setOpenModalId] = useState<string | null>(null);
+
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 md:px-6">
@@ -143,8 +151,8 @@ const ContactSection: React.FC = () => {
                     <Phone className="text-blue-600 mt-1 mr-4" size={20} />
                     <div>
                       <h4 className="text-sm font-medium text-gray-500 mb-1">Call Us</h4>
-                      <a href="+880174167532" className="text-gray-900 hover:text-blue-700 transition-colors">
-                        +880174167532
+                      <a href="mobile:+8801741675326" className="text-gray-900 hover:text-blue-700 transition-colors">
+                        +8801741675326
                       </a>
                     </div>
                   </div>

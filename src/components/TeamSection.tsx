@@ -2,37 +2,37 @@ import React from 'react';
 
 const teamMembers = [
   {
-    name: 'Sarah Johnson',
-    title: 'Principal Architect',
+    name: 'Md. Shahin Hossain Pathan',
+    title: 'Managing Director',
     description:
-      'Sarah has 20+ years of experience in sustainable architecture and has won numerous awards for her innovative designs.',
-    image: 'https://randomuser.me/api/portraits/women/44.jpg',
+      'Md. Shahin Hossain Pathan is the managing director of the company. He has 20+ years of experience in sustainable architecture and has won numerous awards for his innovative designs.',
+    image: 'images/shahin.jpg',
     socials: {
-      facebook: '#',
-      twitter: '#',
+      facebook: 'https://www.facebook.com/shahin.h.pathan',
+      WhatsApp: '+8801741675326',
       instagram: '#',
       linkedin: '#',
     },
   },
   {
-    name: 'Michael Chen',
+    name: 'Sonia Akter',
     title: 'Senior Architect',
     description:
-      'Michael specializes in biophilic design and has led some of our most innovative commercial projects.',
-    image: 'https://randomuser.me/api/portraits/men/32.jpg',
+      'Sonia Akter is the senior architect of the company. She has 5+ years of experience in sustainable architecture and has won numerous awards for her innovative designs.',
+    image: 'images/sonia.jpg',
     socials: {
-      facebook: '#',
-      twitter: '#',
+      facebook: 'https://www.facebook.com/sopno.bilashi.sonia',
+      WhatsApp: '#',
       instagram: '#',
       linkedin: '#',
     },
   },
   {
-    name: 'Aisha Patel',
+    name: 'Abdul Motin Mia',
     title: 'Landscape Architect',
     description:
-      'Aisha brings expertise in integrating natural ecosystems with built environments to create harmonious spaces.',
-    image: 'https://randomuser.me/api/portraits/women/65.jpg',
+      'Abdul Motin Mia is the landscape architect of the company. He has 5+ years of experience in sustainable architecture and has won numerous awards for his innovative designs.',
+    image: '',
     socials: {
       facebook: '#',
       twitter: '#',
@@ -41,14 +41,14 @@ const teamMembers = [
     },
   },
   {
-    name: 'David Rodriguez',
-    title: 'Sustainability Director',
+    name: 'Md. Moinul Hossain',
+    title: 'Technical Director',
     description:
-      'David oversees all sustainability initiatives and ensures our projects meet the highest environmental standards.',
-    image: 'https://randomuser.me/api/portraits/men/54.jpg',
+      'Md. Moinul Hossain is the technical director of the company. He has 5+ years of experience in sustainable architecture and has won numerous awards for his innovative designs.',
+    image: 'images/new.jpg',
     socials: {
-      facebook: '#',
-      twitter: '#',
+      facebook: 'https://www.facebook.com/Nirob.pathan17',
+      WhatsApp: '+8801945032480',
       instagram: '#',
       linkedin: '#',
     },
